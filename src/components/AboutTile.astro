@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import testImage from '../assets/patchyzinha sticker.png';
+
+const backgroundColor = "rgb(96 65 14)";
+const textColor = "rgb(221 185 136)";
+---
+
+<div id="container">
+    <h2>About Me</h2>
+    <div id="main">
+        <Image class="me" src={testImage} alt="test" layout='constrained' height={100}/>
+        <p>My name is Madilyn Tavares, but I go by Maddie. </p>
+    </div>
+</div>
+
+<style define:vars={{backgroundColor, textColor}}>
+    #container {
+        background-color: var(--backgroundColor);
+        float: right;
+        width: 80%;
+        height: 90%;
+    }
+
+    h2 {
+        color: var(--textColor);
+        text-align: center;
+        font-family: var(--font-kalam), Georgia, serif;
+        font-size: 3em;
+    }
+
+    #main {
+        width: 50%;
+        margin: 0 auto;
+        display: flex;
+    }
+
+    .me {
+        height: 20%;
+    }
+
+    p {
+        font-family: var(--font-dm-mono), monospace;
+        color: var(--textColor);
+        text-align: justify;
+    }
+</style>
