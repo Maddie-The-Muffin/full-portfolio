@@ -1,17 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HeroTile from '../components/HeroTile.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const backgroundColor = "rgb(221 185 136)";
 ---
 
 <Layout title="Home - Maddie Tavares">
-	<h1>Human design in the 21st century.</h1>
+	<HeroTile />
 </Layout>
 
 
-<style>
+<style define:vars={{backgroundColor}}>
 	h1 {
 		display: inline;
+		background-color: var(--backgroundColor);
 	}
 </style>

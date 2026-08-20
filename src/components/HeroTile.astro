@@ -1,0 +1,31 @@
+---
+const backgroundColor = "rgb(221 185 136)";
+const textColor = "rgb(96 65 14)";
+---
+
+<div>
+    
+        <h1>Human-first design in the 21st century.</h1>
+    
+</div>
+
+<style define:vars={{backgroundColor, textColor}}>
+    div {
+        background-color: var(--backgroundColor);
+        float: right;
+        width: 80%;
+        height: 90%;
+        align-content: center;
+        justify-items: center;
+    }
+
+    h1 {
+        color: var(--textColor);
+        font-family: var(--font-kalam), Georgia, serif;
+        font-size: 4em;
+        text-align: center;
+        width: 60%;
+        border: thick double var(--textColor);
+        padding: 2em;
+    }
+</style>
