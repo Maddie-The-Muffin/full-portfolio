@@ -1,5 +1,17 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+    fonts: [{
+        provider: fontProviders.fontsource(),
+        name: "DM Mono",
+        cssVariable: "--font-dm-mono"
+    },
+    {
+        provider: fontProviders.fontsource(),
+        name: "Kalam",
+        cssVariable: "--font-kalam",
+    }
+    ]
+});
