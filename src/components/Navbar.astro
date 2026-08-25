@@ -1,72 +1,288 @@
 ---
-const backgroundColor = "rgb(197 211 178)";
-const hoverBgColor = "rgb(151 164 133)";
-const textColor = "rgb(65 76 48)";
+const links = [
+    { href: '/', label: 'Home' },
+    { href: '/web-dev', label: 'Web Dev' },
+    { href: '/games', label: 'Games' },
+    { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
 ---
 
+<header id="site-nav" class="site-nav">
+    <div class="nav-bar">
+        <p class="site-title"><a href="/">Maddie Tavares</a></p>
 
-<div id="navbar">
-    <p class="text" id="title">Maddie Tavares</p>
-    <a class="text" href="/">Home</a>
-    <a class="text" href="#">Websites</a>
-    <a href="/games" class="text">Games</a>
-    <a class="text" href="#">Contact</a>
-    <p id="copyright">copyright Madilyn (Maddie) Tavares 2026</p>
-</div>
+        <button
+            id="nav-toggle"
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="nav-drawer"
+        >
+            <span class="visually-hidden">Toggle menu</span>
+            <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
+    </div>
 
-<style define:vars={{backgroundColor, textColor, hoverBgColor}}>
-    div {
-        background-color: var(--backgroundColor);
-        padding-right: 1em;
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        z-index: 10;
-        border-right: 2px dashed rgb(65 76 48);
+    <nav id="nav-drawer" class="nav-drawer" aria-label="Primary">
+        <ul>
+            {links.map((link) => (
+                <li>
+                    <a
+                        href={link.href}
+                        class="nav-link"
+                        aria-current={currentPath === link.href ? 'page' : undefined}
+                    >
+                        {link.label}
+                    </a>
+                </li>
+            ))}
+        </ul>
+        <p class="copyright">&copy; Madilyn (Maddie) Tavares 2026</p>
+    </nav>
+</header>
+
+<script>
+    const toggle = document.getElementById('nav-toggle');
+    const drawer = document.getElementById('nav-drawer');
+    const nav = document.getElementById('site-nav');
+
+    if (toggle && drawer && nav) {
+        const closeDrawer = () => {
+            drawer.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+        };
+
+        toggle.addEventListener('click', () => {
+            const isOpen = drawer.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        drawer.addEventListener('click', (event) => {
+            if (event.target instanceof HTMLElement && event.target.closest('a')) {
+                closeDrawer();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeDrawer();
+            }
+        });
+
+        document.addEventListener('click', (event) => {
+            if (
+                drawer.classList.contains('open') &&
+                event.target instanceof Node &&
+                !nav.contains(event.target)
+            ) {
+                closeDrawer();
+            }
+        });
     }
+</script>
 
-    #navbar {
-        display: inline-flex;
-        flex-direction: column;
-        justify-content: center;
-        align-content: end;
-        height: 100%;
-        width: 20%;
-    }
-
-    #title {
-        font-family: var(--font-kalam), Georgia, serif;
-        font-size: 3em;
-        line-height: 1;
-        padding-left: 1em;
-        justify-self: end;
-    }
-
-    .text {
-        text-align: right;
-        font-size: 2em;
-        color: var(--textColor);
-    }
-
-    a {
+<style>
+    .site-title a {
+        font-family: var(--font-heading);
+        font-size: 1.8rem;
+        color: var(--color-text);
         text-decoration: none;
-        font-family: var(--font-dm-mono), monospace;
     }
 
-    a:hover {
-        transition: transform 0.25s;
-        background-color: var(--textColor);
-        padding-right: 10px;
-        transform: translateX(10%);
-        color: var(--backgroundColor);
-        text-decoration: underline;
+    .nav-toggle {
+        display: none;
     }
 
-    #copyright {
-        font-family: var(--font-dm-mono), monospace;
-        font-size: 0.75em;
-        position: fixed;
-        bottom: 0px;
-        left: 5px;
+    .copyright {
+        font-size: 0.7rem;
+        color: var(--color-text-muted);
+        text-align: center;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    .nav-link {
+        display: block;
+        text-decoration: none;
+        font-weight: 700;
+        color: var(--color-text);
+        padding: 0.5em 1em;
+        border-radius: var(--radius-pill);
+        text-align: center;
+    }
+
+    .nav-link:hover,
+    .nav-link[aria-current='page'] {
+        background: var(--color-primary-dark);
+        color: var(--color-bg);
+    }
+
+    /* Desktop: fixed vertical sidebar */
+    @media (min-width: 861px) {
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: var(--color-surface);
+            border-right: 2px dashed var(--color-border);
+            display: flex;
+            flex-direction: column;
+            padding: var(--space-4) var(--space-2);
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+        }
+
+        .site-title {
+            margin: 0 0 var(--space-4);
+            text-align: center;
+        }
+
+        .nav-drawer {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .copyright {
+            margin-top: var(--space-3);
+        }
+    }
+
+    /* Tablet/mobile: fixed top bar + toggled drawer */
+    @media (max-width: 860px) {
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 20;
+        }
+
+        .nav-bar {
+            height: var(--topbar-height);
+            background: var(--color-surface);
+            border-bottom: 2px dashed var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--space-3);
+        }
+
+        .site-title {
+            margin: 0;
+        }
+
+        .site-title a {
+            font-size: 1.4rem;
+        }
+
+        .nav-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .nav-toggle-bars {
+            position: relative;
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--color-text);
+            border-radius: 2px;
+        }
+
+        .nav-toggle-bars::before,
+        .nav-toggle-bars::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 26px;
+            height: 2px;
+            background: var(--color-text);
+            border-radius: 2px;
+        }
+
+        .nav-toggle-bars::before {
+            top: -8px;
+        }
+
+        .nav-toggle-bars::after {
+            top: 8px;
+        }
+
+        .nav-drawer {
+            position: fixed;
+            top: var(--topbar-height);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--color-surface);
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+            padding: var(--space-4) var(--space-3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-drawer.open {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-drawer ul {
+            gap: 0.75em;
+        }
+
+        .nav-link {
+            font-size: 1.3rem;
+        }
+
+        .copyright {
+            margin-top: auto;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .nav-drawer {
+            background: rgba(241, 233, 216, 0.98);
+        }
+
+        .nav-link {
+            font-size: 1.15rem;
+        }
+
+        .copyright {
+            font-size: 0.65rem;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .nav-drawer {
+            transition: none;
+        }
     }
 </style>

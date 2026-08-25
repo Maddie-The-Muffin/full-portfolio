@@ -1,0 +1,26 @@
+---
+interface Props {
+    flip?: boolean;
+    class?: string;
+}
+
+const { flip = false, class: className } = Astro.props;
+---
+
+<svg
+    class:list={['wavy-divider', className]}
+    viewBox="0 0 200 20"
+    preserveAspectRatio="none"
+    style={flip ? 'transform: scaleY(-1)' : undefined}
+    role="presentation"
+    aria-hidden="true"
+>
+    <path
+        d="M0 10 Q 10 2, 20 10 T 40 10 T 60 10 T 80 10 T 100 10 T 120 10 T 140 10 T 160 10 T 180 10 T 200 10"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-dasharray="1 7"
+    />
+</svg>

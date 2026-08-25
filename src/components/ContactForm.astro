@@ -1,0 +1,93 @@
+---
+---
+
+<form class="contact-form postcard" action="https://formspree.io/f/REPLACE_ME" method="POST">
+    <!--
+      TODO(Maddie):
+      1) Create a Formspree (https://formspree.io) or Web3Forms (https://web3forms.com) account.
+      2) Replace REPLACE_ME above with your real form endpoint ID.
+         (Using Web3Forms instead? Swap the action for their endpoint and add a hidden
+         "access_key" input with your key instead of relying on this action URL.)
+      3) Optionally turn on reCAPTCHA/hCaptcha from your form provider's dashboard —
+         no code changes needed here for that.
+    -->
+    <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required autocomplete="name" />
+    </div>
+
+    <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="_replyto" required autocomplete="email" />
+    </div>
+
+    <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+    </div>
+
+    <input
+        type="text"
+        name="_gotcha"
+        tabindex="-1"
+        autocomplete="off"
+        class="hp-field"
+        aria-hidden="true"
+    />
+
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>
+
+<style>
+    .contact-form {
+        max-width: 32rem;
+        margin: 0 auto;
+        padding: var(--space-4);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35em;
+    }
+
+    label {
+        font-family: var(--font-heading);
+        font-size: 1.2rem;
+    }
+
+    input,
+    textarea {
+        font-family: var(--font-body);
+        font-size: 1rem;
+        padding: 0.6em 0.8em;
+        border-radius: 8px;
+        border: 1px dashed var(--color-border);
+        background: var(--color-bg);
+        color: var(--color-text);
+    }
+
+    input:focus,
+    textarea:focus {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 1px;
+    }
+
+    .hp-field {
+        position: absolute;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+    }
+
+    button {
+        align-self: flex-start;
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+    }
+</style>

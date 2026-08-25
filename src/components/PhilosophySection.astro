@@ -1,0 +1,54 @@
+---
+import CatSticker from './CatSticker.astro';
+---
+
+<section class="philosophy postcard" aria-labelledby="philosophy-heading">
+    <div class="philosophy-copy">
+        <h2 id="philosophy-heading">Why "Human-First Design"?</h2>
+        <p>
+            I love technology, but I love the humans behind it even more. Behind every great
+            invention, every little avatar, everything great and small, there's a person.* And
+            I never want us to forget that. So in an age where generative AI is making enough
+            noise to deafen the masses, I want to champion <strong>human-first design</strong>
+            &mdash; preserving the real connection between client and developer.
+        </p>
+        <p>
+            I may use generative AI while building your site, but everything gets a human's eye
+            and a human's second opinion before it ships. And if you'd rather I skip the AI
+            altogether, that's more than fine &mdash; I'm just as happy building your site with
+            nothing but my own two hands.
+        </p>
+        <p>
+            I want every client to remember there's a real person behind the screen &mdash;
+            someone who genuinely cares about getting your project right.
+        </p>
+        <p>
+            Interested in working together? <a href="/contact">Reach out and let's chat.</a>
+        </p>
+        <p class="footnote">*For the most part &mdash; my cat helps too.</p>
+    </div>
+
+    <CatSticker rotate={-8} caption="Patchyzinha, quality control" class="philosophy-cat" />
+</section>
+
+<style>
+    .philosophy {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-4);
+        align-items: center;
+        justify-content: center;
+        max-width: 56rem;
+        margin: 0 auto var(--space-5);
+        padding: var(--space-4);
+    }
+
+    .philosophy-copy {
+        flex: 1 1 32rem;
+    }
+
+    .footnote {
+        font-size: 0.8rem;
+        color: var(--color-text-muted);
+    }
+</style>

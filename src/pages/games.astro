@@ -1,60 +1,41 @@
 ---
-import  Layout  from "../layouts/Layout.astro";
-import GameCard from "../components/GameCard.astro";
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
 
-const backgroundColor = "rgb(221 185 136)";
-const textColor = "rgb(96 65 14)";
+const games = (await getCollection('gameProjects')).sort(
+    (a, b) => a.data.order - b.data.order || b.data.year - a.data.year
+);
 ---
 
 <Layout title="Games - Maddie Tavares">
-    <div>
-        <div id="title-container">
-            <h1>Games</h1>
-            <p>Before my foray into full-stack development, I was a gameplay programmer for a handful of years. I worked primarily
-                in the Unity engine with C#. Take a look at some of my projects:
-            </p>
-        </div>
-        <div id="games-container">
-            <GameCard />
-            <GameCard />
-        </div>
-    </div>
+	<PageHeader
+		title="Games"
+		lede="Before my foray into full-stack development, I was a gameplay programmer for a handful of years. I worked primarily in the Unity engine with C#. Take a look at some of my projects:"
+	/>
+
+	<div class="projects-grid">
+		{games.map((game) => (
+			<ProjectCard
+				title={game.data.title}
+				summary={game.data.summary}
+				tags={game.data.tags}
+				year={game.data.year}
+				meta={game.data.engine}
+				primaryLink={game.data.playUrl ? { label: 'Play', url: game.data.playUrl } : undefined}
+				secondaryLink={game.data.repoUrl ? { label: 'Code', url: game.data.repoUrl } : undefined}
+			/>
+		))}
+	</div>
 </Layout>
 
-<style define:vars={{backgroundColor, textColor}}>
-    div {
-        background-color: var(--backgroundColor);
-        float: right;
-        width: 80%;
-        padding-bottom: 1em;
-    }
-
-    #title-container {
-        width: 100%;
-    }
-
-    #games-container {
-        width: 80%;
-        display: grid;
-        grid: auto-flow / repeat(2, 50%);
-        justify-content: center;
-    }
-
-    h1 {
-        color: var(--textColor);
-        font-family: var(--font-kalam), Georgia, serif;
-        font-size: 4em;
-        text-align: center;
-        width: 60%;
-        padding-top: 1em;
-        margin: 0 auto;
-    }
-
-    p {
-        color: var(--textColor);
-        font-family: var(--font-dm-mono), monospace;
-        text-align: center;
-        width: 50%;
-        margin: 0 auto;
-    }
+<style>
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: var(--space-3);
+		max-width: 72rem;
+		margin: 0 auto;
+	}
 </style>

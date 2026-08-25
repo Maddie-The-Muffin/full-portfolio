@@ -1,22 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import HeroTile from '../components/HeroTile.astro';
-import AboutTile from '../components/AboutTile.astro';
-import PitchTile from '../components/PitchTile.astro';
-
-const backgroundColor = "rgb(221 185 136)";
+import HomeHero from '../components/HomeHero.astro';
+import AboutSection from '../components/AboutSection.astro';
+import PhilosophySection from '../components/PhilosophySection.astro';
+import WavyDivider from '../components/WavyDivider.astro';
 ---
 
 <Layout title="Home - Maddie Tavares">
-	<HeroTile />
-	<AboutTile />
-	<PitchTile />
+	<HomeHero />
+	<WavyDivider />
+	<AboutSection />
+	<WavyDivider flip />
+	<PhilosophySection />
 </Layout>
-
-
-<style define:vars={{backgroundColor}}>
-	h1 {
-		display: inline;
-		background-color: var(--backgroundColor);
-	}
-</style>

@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('webProjects')).sort(
+    (a, b) => a.data.order - b.data.order || b.data.year - a.data.year
+);
+---
+
+<Layout title="Web Dev - Maddie Tavares">
+	<PageHeader
+		title="Web Dev"
+		lede="I build full-stack web apps with the PERN stack (PostgreSQL, Express, React, Node.js), along with some Astro and MongoDB on the side. Here's some of what I've been working on:"
+	/>
+
+	<div class="projects-grid">
+		{projects.map((project) => (
+			<ProjectCard
+				title={project.data.title}
+				summary={project.data.summary}
+				tags={project.data.tags}
+				year={project.data.year}
+				primaryLink={project.data.liveUrl ? { label: 'Live site', url: project.data.liveUrl } : undefined}
+				secondaryLink={project.data.repoUrl ? { label: 'Code', url: project.data.repoUrl } : undefined}
+			/>
+		))}
+	</div>
+</Layout>
+
+<style>
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: var(--space-3);
+		max-width: 72rem;
+		margin: 0 auto;
+	}
+</style>

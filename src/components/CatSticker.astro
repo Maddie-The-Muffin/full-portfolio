@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import catSticker from '../assets/patchyzinha sticker.png';
+
+interface Props {
+    rotate?: number;
+    caption?: string;
+    class?: string;
+}
+
+const { rotate = -6, caption, class: className } = Astro.props;
+const rotateDeg = `${rotate}deg`;
+---
+
+<figure class:list={['cat-sticker', className]} define:vars={{ rotateDeg }}>
+    <Image
+        class="cat-photo"
+        src={catSticker}
+        alt="A sticker of Maddie's tortoiseshell cat, Patchyzinha"
+        width={140}
+    />
+    {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+    .cat-sticker {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        transform: rotate(var(--rotateDeg));
+        filter: drop-shadow(3px 5px 4px rgba(63, 74, 52, 0.25));
+    }
+
+    .cat-photo {
+        width: 110px;
+        height: auto;
+    }
+
+    figcaption {
+        margin-top: 0.4em;
+        font-family: var(--font-heading);
+        font-size: 1.1rem;
+        color: var(--color-text-muted);
+        text-align: center;
+        max-width: 8rem;
+    }
+</style>

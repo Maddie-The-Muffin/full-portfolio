@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Layout title="Contact - Maddie Tavares">
+	<PageHeader
+		title="Contact"
+		lede="Got a project in mind, a question, or just want to say hi? I'd love to hear from you."
+	/>
+
+	<ContactForm />
+
+	<section class="elsewhere" aria-label="Find me elsewhere">
+		<p>You can also find me on:</p>
+		<ul>
+			<!-- TODO(Maddie): replace these with your real profile links -->
+			<li><a href="#">GitHub</a></li>
+			<li><a href="#">LinkedIn</a></li>
+		</ul>
+	</section>
+</Layout>
+
+<style>
+	.elsewhere {
+		max-width: 32rem;
+		margin: var(--space-4) auto 0;
+		text-align: center;
+	}
+
+	.elsewhere ul {
+		list-style: none;
+		display: flex;
+		gap: 1.5em;
+		justify-content: center;
+		padding: 0;
+	}
+
+	.elsewhere a {
+		font-weight: 700;
+	}
+</style>

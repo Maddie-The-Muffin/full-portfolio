@@ -1,0 +1,92 @@
+---
+---
+
+<section class="about" aria-labelledby="about-heading">
+    <div class="about-photo">
+        <!--
+          TODO(Maddie): Add your real photo to src/assets/ (e.g. maddie-photo.jpg), then
+          replace the placeholder div below with:
+
+            import { Image } from 'astro:assets';
+            import maddiePhoto from '../assets/maddie-photo.jpg';
+            ...
+            <Image src={maddiePhoto} alt="Maddie Tavares" width={360} height={360} class="photo" />
+        -->
+        <div class="photo-frame postcard" role="img" aria-label="Placeholder for Maddie's photo">
+            <span aria-hidden="true">📷</span>
+            <p>your photo here</p>
+        </div>
+    </div>
+
+    <div class="about-copy">
+        <h2 id="about-heading">About Me</h2>
+        <p>
+            I'm Madilyn Tavares &mdash; Maddie to just about everyone. I've spent 3 years writing
+            professional code, and since May 2026 I've been deep in a full-stack development
+            bootcamp, sharpening my skills in the <strong>PERN stack</strong> (PostgreSQL,
+            Express, React, and Node.js). I've also gotten my hands dirty with
+            <strong>Astro</strong> and <strong>MongoDB</strong> along the way.
+        </p>
+        <p>
+            Before all that, I spent several years as a gameplay programmer working in
+            <strong>C#</strong>, mostly inside the Unity engine &mdash; a background that still
+            shows up in how I think about interaction and feel, even on the web.
+        </p>
+        <p>
+            Outside of code, you'll usually find me buried in an epic fantasy novel, scribbling
+            down a story of my own, keeping half an eye on a baseball game, or just soaking in
+            the view of the Blue Ridge Mountains from my porch.
+        </p>
+        <p>
+            Interested in having me build something for you? <a href="/contact">Let's talk.</a>
+        </p>
+    </div>
+</section>
+
+<style>
+    .about {
+        display: grid;
+        grid-template-columns: minmax(200px, 280px) 1fr;
+        gap: var(--space-4);
+        align-items: start;
+        max-width: 56rem;
+        margin: 0 auto var(--space-5);
+    }
+
+    .photo-frame {
+        aspect-ratio: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+        color: var(--color-text-muted);
+        transform: rotate(-1.5deg);
+    }
+
+    .photo-frame span {
+        font-size: 2.5rem;
+    }
+
+    .photo-frame p {
+        margin: 0;
+        font-family: var(--font-heading);
+        font-size: 1.1rem;
+    }
+
+    .about-copy p {
+        max-width: 42rem;
+    }
+
+    @media (max-width: 700px) {
+        .about {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            text-align: center;
+        }
+
+        .photo-frame {
+            width: min(240px, 70vw);
+        }
+    }
+</style>

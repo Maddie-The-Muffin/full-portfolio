@@ -5,13 +5,13 @@ import { defineConfig, fontProviders } from 'astro/config';
 export default defineConfig({
     fonts: [{
         provider: fontProviders.fontsource(),
-        name: "DM Mono",
-        cssVariable: "--font-dm-mono"
+        name: "Caveat",
+        cssVariable: "--font-caveat"
     },
     {
         provider: fontProviders.fontsource(),
-        name: "Kalam",
-        cssVariable: "--font-kalam",
+        name: "Nunito",
+        cssVariable: "--font-nunito",
     }
     ]
 });
