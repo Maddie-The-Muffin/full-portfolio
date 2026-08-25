@@ -29,6 +29,7 @@
     /* Layout */
     --sidebar-width: clamp(220px, 20vw, 320px);
     --topbar-height: 64px;
+    --page-content-width: calc(100vw - var(--sidebar-width) - var(--space-5));
 }
 
 *,
