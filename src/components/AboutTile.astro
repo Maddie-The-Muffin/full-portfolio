@@ -4,6 +4,7 @@ import testImage from '../assets/patchyzinha sticker.png';
 
 const backgroundColor = "rgb(96 65 14)";
 const textColor = "rgb(221 185 136)";
+const linkColor = "rgb(197 211 178)";
 ---
 
 <div id="container">
@@ -24,7 +25,7 @@ const textColor = "rgb(221 185 136)";
     </div>
 </div>
 
-<style define:vars={{backgroundColor, textColor}}>
+<style define:vars={{backgroundColor, textColor, linkColor}}>
     #container {
         background-color: var(--backgroundColor);
         float: right;
@@ -54,5 +55,10 @@ const textColor = "rgb(221 185 136)";
         font-family: var(--font-dm-mono), monospace;
         color: var(--textColor);
         text-align: justify;
+    }
+
+    a {
+        color: var(--linkColor);
+        font-weight: bold;
     }
 </style>
