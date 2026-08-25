@@ -1,0 +1,32 @@
+---
+import  Layout  from "../layouts/Layout.astro";
+
+const backgroundColor = "rgb(221 185 136)";
+const textColor = "rgb(96 65 14)";
+---
+
+<Layout title="Games - Maddie Tavares">
+    <div>
+        <h1>Games</h1>
+    </div>
+</Layout>
+
+<style define:vars={{backgroundColor, textColor}}>
+    div {
+        background-color: var(--backgroundColor);
+        float: right;
+        width: 80%;
+        height: 90%;
+        align-content: center;
+    }
+
+    h1 {
+        color: var(--textColor);
+        font-family: var(--font-kalam), Georgia, serif;
+        font-size: 4em;
+        text-align: center;
+        width: 60%;
+        padding: 2em;
+        margin: 0 auto;
+    }
+</style>
