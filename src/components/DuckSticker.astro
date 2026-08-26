@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import catSticker from '../assets/patchyzinha sticker.png';
+import duckSticker from '../assets/ducky sticker.png';
 
 interface Props {
     rotate?: number;
@@ -12,18 +12,18 @@ const { rotate = -6, caption, class: className } = Astro.props;
 const rotateDeg = `${rotate}deg`;
 ---
 
-<figure class:list={['cat-sticker', className]} define:vars={{ rotateDeg }}>
+<figure class:list={['duck-sticker', className]}>
     <Image
-        class="cat-photo"
-        src={catSticker}
+        class="duck-photo"
+        src={duckSticker}
         alt="A sticker of Maddie's tortoiseshell cat, Patchyzinha"
         width={140}
     />
     {caption && <figcaption>{caption}</figcaption>}
 </figure>
 
-<style>
-    .cat-sticker {
+<style define:vars={{ rotateDeg }}>
+    .duck-sticker {
         display: inline-flex;
         flex-direction: column;
         align-items: center;
@@ -32,7 +32,7 @@ const rotateDeg = `${rotate}deg`;
         filter: drop-shadow(3px 5px 4px rgba(63, 74, 52, 0.25));
     }
 
-    .cat-photo {
+    .duck-photo {
         width: 110px;
         height: auto;
     }
