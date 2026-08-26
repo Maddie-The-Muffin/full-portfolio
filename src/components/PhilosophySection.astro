@@ -2,6 +2,7 @@
 import CatSticker from './CatSticker.astro';
 ---
 
+<div class="philosophy-container">
 <section class="philosophy postcard" aria-labelledby="philosophy-heading">
     <div class="philosophy-copy">
         <h2 id="philosophy-heading">Why "Human-First Design"?</h2>
@@ -30,21 +31,26 @@ import CatSticker from './CatSticker.astro';
 
     <CatSticker rotate={-8} caption="Patchyzinha, quality control" class="philosophy-cat" />
 </section>
+</div>
 
 <style>
+    .philosophy-container {
+        width: var(--page-content-width);
+        margin: 0 0 var(--space-5) auto;
+    }
     .philosophy {
         display: flex;
         flex-wrap: wrap;
         gap: var(--space-4);
         align-items: center;
         justify-content: center;
-        width: var(--page-content-width);
-        margin: 0 0 var(--space-5) auto;
+        width: 75%;
+        margin: 0 auto;
         padding: var(--space-4);
     }
 
     .philosophy-copy {
-        flex: 1 1 32rem;
+        width: 70%;
     }
 
     .footnote {
