@@ -1,6 +1,6 @@
 ---
 ---
-
+<div class="contact-container">
 <form class="contact-form postcard" action="https://formspree.io/f/REPLACE_ME" method="POST">
     <!--
       TODO(Maddie):
@@ -37,8 +37,14 @@
 
     <button type="submit" class="btn btn-primary">Send</button>
 </form>
+</div>
 
 <style>
+    .contact-container {
+        width: var(--page-content-width);
+        margin: 0 0 0 auto;
+    }
+
     .contact-form {
         max-width: 32rem;
         margin: 0 auto;
