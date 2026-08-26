@@ -14,13 +14,15 @@ const { title, lede } = Astro.props;
 
 <style>
     .page-header {
-        max-width: 42rem;
-        margin: 0 auto var(--space-4);
+        width: var(--page-content-width);
+        margin: 0 0 var(--space-4) auto;
         text-align: center;
     }
 
     .lede {
+        width: 75%;
         font-size: 1.15rem;
         color: var(--color-text-muted);
+        margin: 0 auto var(--space-4);
     }
 </style>
