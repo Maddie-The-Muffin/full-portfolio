@@ -16,7 +16,7 @@ const projects = (await getCollection('webProjects')).sort(
 	/>
 
 	<div class="projects-grid">
-		{projects.map((project) => (
+		{projects.length > 0 ? projects.map((project) => (
 			<ProjectCard
 				title={project.data.title}
 				summary={project.data.summary}
@@ -25,7 +25,8 @@ const projects = (await getCollection('webProjects')).sort(
 				primaryLink={project.data.liveUrl ? { label: 'Live site', url: project.data.liveUrl } : undefined}
 				secondaryLink={project.data.repoUrl ? { label: 'Code', url: project.data.repoUrl } : undefined}
 			/>
-		))}
+		)) : (<p class="placeholder">Check back soon for updates!</p>)
+		}
 	</div>
 </Layout>
 
@@ -36,5 +37,10 @@ const projects = (await getCollection('webProjects')).sort(
 		gap: var(--space-3);
 		width: var(--page-content-width);
 		margin: 0 0 var(--space-5) auto;
+	}
+
+	.placeholder {
+		color: var(--color-text-muted);
+		text-align: center;
 	}
 </style>
