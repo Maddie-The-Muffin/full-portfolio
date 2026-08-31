@@ -22,6 +22,7 @@ const projects = (await getCollection('webProjects')).sort(
 				summary={project.data.summary}
 				tags={project.data.tags}
 				year={project.data.year}
+				image={project.data.image ? project.data.image : undefined}
 				primaryLink={project.data.liveUrl ? { label: 'Live site', url: project.data.liveUrl } : undefined}
 				secondaryLink={project.data.repoUrl ? { label: 'Code', url: project.data.repoUrl } : undefined}
 			/>
