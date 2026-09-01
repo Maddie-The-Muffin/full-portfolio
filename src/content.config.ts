@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 const projectSchema = z.object({
@@ -10,6 +11,7 @@ const projectSchema = z.object({
     year: z.number().int(),
     featured: z.boolean().default(false),
     order: z.number().default(0),
+    display: z.boolean().default(true)
 });
 
 const webProjects = defineCollection({

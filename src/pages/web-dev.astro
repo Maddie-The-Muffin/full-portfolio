@@ -6,7 +6,7 @@ import { getCollection } from 'astro:content';
 
 const projects = (await getCollection('webProjects')).sort(
     (a, b) => a.data.order - b.data.order || b.data.year - a.data.year
-);
+).filter((project) => project.data.display);
 ---
 
 <Layout title="Web Dev - Maddie Tavares">
