@@ -7,25 +7,38 @@ import ContactForm from '../components/ContactForm.astro';
 <Layout title="Contact - Maddie Tavares">
 	<PageHeader
 		title="Contact"
-		lede="Got a project in mind, a question, or just want to say hi? I'd love to hear from you."
+		lede="Got a project in mind, a question, or just want to chat? Send it my way!"
 	/>
 
 	<ContactForm />
 
+	<section class="working-hours" aria-label="Working hours">
+		<p>My working hours are (as of right now) 10am-4pm EST, Monday-Thursday. Subject to change without notice.</p>
+	</section>
+
 	<section class="elsewhere" aria-label="Find me elsewhere">
 		<p>You can also find me on:</p>
 		<ul>
-			<!-- TODO(Maddie): replace these with your real profile links -->
-			<li><a href="#">GitHub</a></li>
-			<li><a href="#">LinkedIn</a></li>
+			<li class="noshow"><a href="#">GitHub</a></li>
+			<li><a href="https://www.linkedin.com/in/madilyn-tavares/">LinkedIn</a></li>
 		</ul>
 	</section>
 </Layout>
 
 <style>
-	.elsewhere {
+	.working-hours {
 		width: var(--page-content-width);
 		margin: var(--space-4) 0 0 auto;
+		text-align: center;
+	}
+
+	.working-hours p {
+		font-size: 12px;
+	}
+
+	.elsewhere {
+		width: var(--page-content-width);
+		margin: var(--space-1) 0 0 auto;
 		text-align: center;
 	}
 
@@ -39,5 +52,9 @@ import ContactForm from '../components/ContactForm.astro';
 
 	.elsewhere a {
 		font-weight: 700;
+	}
+
+	.noshow {
+		display: none;
 	}
 </style>
