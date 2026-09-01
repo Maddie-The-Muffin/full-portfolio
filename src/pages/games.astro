@@ -23,6 +23,8 @@ const games = (await getCollection('gameProjects')).sort(
 				tags={game.data.tags}
 				year={game.data.year}
 				meta={game.data.engine}
+				image={game.data.image ? game.data.image : undefined}
+				imageAlt={game.data.imageAlt}
 				primaryLink={game.data.playUrl ? { label: 'Play', url: game.data.playUrl } : undefined}
 				secondaryLink={game.data.repoUrl ? { label: 'Code', url: game.data.repoUrl } : undefined}
 			/>

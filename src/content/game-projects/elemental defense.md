@@ -5,4 +5,7 @@ tags: ["Unity", "C#", "3D"]
 engine: "Unity"
 year: 2023
 order: 2
+image: "/src/assets/emdefense_title_improved.png"
+imageAlt: "The title screen for the game Elemental Defense, displaying a rocky path with lava flowing over it."
+repoUrl: "https://4mstudios.wordpress.com/"
 ---
