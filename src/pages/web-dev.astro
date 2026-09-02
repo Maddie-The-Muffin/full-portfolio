@@ -12,7 +12,8 @@ const projects = (await getCollection('webProjects')).sort(
 <Layout title="Web Dev - Maddie Tavares">
 	<PageHeader
 		title="Web Dev"
-		lede="I build full-stack web apps with the PERN stack (PostgreSQL, Express, React, Node.js), along with some Astro and MongoDB on the side. Here's some of what I've been working on:"
+		lede="I build full-stack web apps with the PERN stack (PostgreSQL, Express, React, Node.js), along with some Astro and Next.js on the side. 
+		Here's some of what I've been working on:"
 	/>
 
 	<div class="projects-grid">
@@ -35,7 +36,7 @@ const projects = (await getCollection('webProjects')).sort(
 <style>
 	.projects-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		grid-template-columns: repeat(3, minmax(280px, 1fr));
 		gap: var(--space-3);
 		width: var(--page-content-width);
 		margin: 0 0 var(--space-5) auto;

@@ -35,7 +35,7 @@ const games = (await getCollection('gameProjects')).sort(
 <style>
 	.projects-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		grid-template-columns: repeat(3, minmax(280px, 1fr));
 		gap: var(--space-3);
 		width: var(--page-content-width);
 		margin: 0 0 var(--space-5) auto;
