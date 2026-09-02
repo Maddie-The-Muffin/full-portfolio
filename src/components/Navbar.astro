@@ -39,7 +39,9 @@ const currentPath = Astro.url.pathname;
                 </li>
             ))}
         </ul>
-        <p class="copyright">&copy; Madilyn (Maddie) Tavares 2026</p>
+        <p class="copyright">
+            &copy; Madilyn (Maddie) Tavares 2026 &middot; <a href="/privacy" class="privacy-link">Privacy</a>
+        </p>
     </nav>
 </header>
 
@@ -99,6 +101,10 @@ const currentPath = Astro.url.pathname;
         font-size: 0.7rem;
         color: var(--color-text-muted);
         text-align: center;
+    }
+
+    .privacy-link {
+        color: inherit;
     }
 
     ul {

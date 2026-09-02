@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const lastUpdated = 'September 2, 2026';
+---
+
+<Layout title="Privacy Policy - Maddie Tavares">
+	<PageHeader
+		title="Privacy Policy"
+		lede={`Last updated ${lastUpdated}`}
+	/>
+
+	<article class="policy">
+		<p>
+			This site (madietavares.dev — replace with your actual domain) is a personal portfolio.
+			It doesn't sell anything or run ads, and it collects very little information about
+			visitors. This page explains what is collected, why, and by whom.
+		</p>
+
+		<h2>Hosting &amp; server logs</h2>
+		<p>
+			This site is hosted on <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel</a>.
+			Like most hosts, Vercel automatically logs standard request data for every visit —
+			things like IP address, browser/device type, referring page, and request timestamps —
+			for security, performance, and abuse-prevention purposes. I don't have a dashboard of
+			this data myself; it's handled under Vercel's own privacy policy, linked above.
+		</p>
+
+		<h2>Cookies &amp; tracking</h2>
+		<p>
+			This site does not use analytics, advertising, or tracking cookies. No cookie banner is
+			shown because no non-essential cookies are set.
+		</p>
+
+		<h2>Contact form</h2>
+		<p>
+			The <a href="/contact">Contact</a> page includes a form for reaching out. When you submit
+			it, your name, email address, and message are sent to
+			<a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Formspree</a>,
+			a third-party form service, which forwards the submission to my personal email inbox.
+			I use that information only to reply to you — it isn't added to any mailing list, sold,
+			or shared with anyone else. Formspree's own privacy policy governs how they handle the
+			data in transit and in their systems.
+		</p>
+
+		<h2>Third-party links</h2>
+		<p>
+			This site links out to places like GitHub and LinkedIn. Those sites have their own
+			privacy policies, which I'd encourage you to check if you're curious how they handle
+			your data.
+		</p>
+
+		<h2>Children's privacy</h2>
+		<p>
+			This site isn't directed at children, and I don't knowingly collect information from
+			anyone under 13.
+		</p>
+
+		<h2>Changes to this policy</h2>
+		<p>
+			If what this site collects ever changes (for example, if analytics are added later),
+			this page will be updated and the date above will reflect the change.
+		</p>
+
+		<h2>Contact</h2>
+		<p>
+			Questions about this policy? Reach out via the <a href="/contact">contact page</a> or
+			at <a href="mailto:maddie.law19@gmail.com">maddie.law19@gmail.com</a>.
+		</p>
+	</article>
+</Layout>
+
+<style>
+	.policy {
+		width: var(--page-content-width);
+		margin: 0 0 0 auto;
+	}
+
+	.policy h2 {
+		font-family: var(--font-heading);
+		font-size: 1.3rem;
+		margin: var(--space-4) auto var(--space-1) auto;
+		max-width: 42rem;
+	}
+
+	.policy p {
+		line-height: 1.6;
+		margin: 0 auto;
+		max-width: 42rem;
+	}
+
+	.policy a {
+		color: var(--color-primary-dark);
+	}
+</style>
