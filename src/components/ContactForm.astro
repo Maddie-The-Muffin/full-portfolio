@@ -35,6 +35,7 @@
 </div>
 
 <script>
+    function initContactForm() {
     const form = document.querySelector('.contact-form');
     if (form) {
         const nameInput = form.querySelector('#name') as HTMLInputElement | null;
@@ -123,6 +124,9 @@
 
         updateSubmitState();
     }
+    }
+
+    document.addEventListener('astro:page-load', initContactForm);
 </script>
 
 <style>
