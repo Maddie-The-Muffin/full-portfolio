@@ -36,8 +36,8 @@ const lastUpdated = 'September 2, 2026';
 		<h2>Contact form</h2>
 		<p>
 			The <a href="/contact">Contact</a> page includes a form for reaching out. When you submit
-			it, your name, email address, and message are sent to
-			<a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Formspree</a>,
+			it, your name, email address, and message are sent
+			to <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Formspree</a>,
 			a third-party form service, which forwards the submission to my personal email inbox.
 			I use that information only to reply to you — it isn't added to any mailing list, sold,
 			or shared with anyone else. Formspree's own privacy policy governs how they handle the
@@ -91,5 +91,12 @@ const lastUpdated = 'September 2, 2026';
 
 	.policy a {
 		color: var(--color-primary-dark);
+	}
+
+	@media (max-width: 860px) {
+		.policy {
+			width: 100%;
+			margin: 0 auto;
+		}
 	}
 </style>
