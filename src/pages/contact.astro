@@ -14,6 +14,10 @@ import ContactForm from '../components/ContactForm.astro';
 
 	<section class="working-hours" aria-label="Working hours">
 		<p>My working hours are (as of right now) 10am-4pm EST, Monday-Thursday. Subject to change without notice.</p>
+		<p>Projects I feel comfortable taking on include simple landing pages and internal dashboards. I will not accept 
+			any projects involving e-commerce, payment authorization, or anything else involving major complexities. If you 
+			have an idea and are in doubt what catgory it falls into - ask! (I reserve the right to decline any project proposal.)
+		</p>
 	</section>
 
 	<section class="elsewhere" aria-label="Find me elsewhere">
@@ -56,5 +60,12 @@ import ContactForm from '../components/ContactForm.astro';
 
 	.noshow {
 		display: none;
+	}
+
+	@media (max-width: 860px) {
+		.working-hours, .elsewhere {
+			width: 100%;
+			margin: 0 auto;
+		}
 	}
 </style>
