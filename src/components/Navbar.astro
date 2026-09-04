@@ -9,7 +9,7 @@ const links = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header id="site-nav" class="site-nav">
+<header id="site-nav" class="site-nav" transition:persist>
     <div class="nav-bar">
         <p class="site-title"><a href="/">Maddie Tavares</a></p>
 
@@ -46,6 +46,22 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <script>
+    const updateActiveLink = () => {
+        const currentPath = window.location.pathname;
+        document.querySelectorAll('.nav-link').forEach((link) => {
+            if (link instanceof HTMLAnchorElement) {
+                if (new URL(link.href).pathname === currentPath) {
+                    link.setAttribute('aria-current', 'page');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            }
+        });
+    };
+
+    updateActiveLink();
+    document.addEventListener('astro:after-swap', updateActiveLink);
+
     const toggle = document.getElementById('nav-toggle');
     const drawer = document.getElementById('nav-drawer');
     const nav = document.getElementById('site-nav');
