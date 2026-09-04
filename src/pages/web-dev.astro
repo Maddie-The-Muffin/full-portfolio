@@ -46,4 +46,13 @@ const projects = (await getCollection('webProjects')).sort(
 		color: var(--color-text-muted);
 		text-align: center;
 	}
+
+	@media (max-width: 860px) {
+		.projects-grid 
+		{
+			display: block;
+			width: 100%;
+			margin: 0 auto;
+		}
+	}
 </style>
