@@ -1,20 +1,12 @@
 ---
+import { Image } from "astro:assets";
+import maddiePhoto from "../assets/headshot.jpg";
 ---
 
 <section class="about" aria-labelledby="about-heading">
     <div class="about-photo">
-        <!--
-          TODO(Maddie): Add your real photo to src/assets/ (e.g. maddie-photo.jpg), then
-          replace the placeholder div below with:
-
-            import { Image } from 'astro:assets';
-            import maddiePhoto from '../assets/maddie-photo.jpg';
-            ...
-            <Image src={maddiePhoto} alt="Maddie Tavares" width={360} height={360} class="photo" />
-        -->
         <div class="photo-frame postcard" role="img" aria-label="Placeholder for Maddie's photo">
-            <span aria-hidden="true">📷</span>
-            <p>your photo here</p>
+            <Image src={maddiePhoto} alt="Maddie Tavares" width={360} height={360} class="photo" loading="eager"/>
         </div>
     </div>
 
@@ -71,6 +63,12 @@
         margin: 0;
         font-family: var(--font-heading);
         font-size: 1.1rem;
+    }
+
+    .photo {
+        border-radius: var(--radius-card);
+        max-height: 90%;
+        max-width: 90%;
     }
 
     .about-copy p {
