@@ -87,9 +87,7 @@
         }
 
         function updateSubmitState() {
-            console.log("beef valid? " + submitBtn);
             const allValid = fields.every(isFieldValid);
-            console.log("all valid? " + allValid);
             if (submitBtn) submitBtn.disabled = !allValid;
             return allValid;
         }
@@ -112,7 +110,6 @@
         });
 
         form.addEventListener('submit', (event) => {
-            console.log("chicken");
             const allValid = updateSubmitState();
             if (!allValid) {
                 event.preventDefault();
