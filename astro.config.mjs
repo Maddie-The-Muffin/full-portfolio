@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://full-portfolio.vercel.app', // Update before going live!
+    site: 'https://maddietavares.dev',
     integrations: [sitemap()],
     fonts: [{
         provider: fontProviders.fontsource(),
