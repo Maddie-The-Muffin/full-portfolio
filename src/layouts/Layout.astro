@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar.astro'
 import { Font } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
 import '../styles/global.css';
+import { describe } from 'astro:schema';
 
 const { title } = Astro.props;
 const desc = "Meet Madilyn Tavares, an experienced programmer and champion of human-first development."
@@ -12,11 +13,23 @@ const desc = "Meet Madilyn Tavares, an experienced programmer and champion of hu
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/svg+xml" href="/leaves.svg" />
+		<link rel="icon" href="/leaves.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={desc} />
+		<meta 
+			property="og:title"
+			content="Maddie Tavares - Human-First Web Dev"
+		/>
+		<meta 
+			property="og:description"
+			content={desc}
+		/>
+		<meta
+			property="og:url"
+			content="https://maddietavares.dev"
+		/>
 		<Font cssVariable='--font-caveat' />
 		<Font cssVariable='--font-nunito' />
 		<ClientRouter />
