@@ -1,46 +1,7 @@
-# Astro Starter Kit: Basics
+# Human-First Websites
+In an age where every second phrase we hear is "artificial intelligence," I want to remind everyone that people still exist--that people are still making great things. And I'm one of them! Everything I make, even if I do have AI help out, I always look over to make sure I'm happy with it before releasing it.
 
-```sh
-npm create astro@latest -- --template basics
-```
+# About the Site
+I made this website to show off the games and websites/web apps I've built. Feel free to browse casually--but if you're interested in working with me on something, I'd love to hear it! You can get in touch with me via the contact form on the website or at maddie.law19@gmail.com.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+(NOTE: This site was made with the help of Claude Code)
