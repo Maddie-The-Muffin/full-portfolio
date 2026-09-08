@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 interface ProjectLink {
     label: string;
     url: string;
@@ -8,7 +10,7 @@ interface Props {
     title: string;
     summary: string;
     tags?: string[];
-    image?: string;
+    image?: ImageMetadata;
     imageAlt?: string;
     year?: number;
     meta?: string;
@@ -32,7 +34,7 @@ const {
 <article class="project-card postcard">
     <div class="project-face">
         {image ? (
-            <img src={image} alt={imageAlt ?? title} loading="lazy" />
+            <Image src={image} alt={imageAlt ?? title} loading="lazy" />
         ) : (
             <div class="placeholder-face" aria-hidden="true">
                 <span>{title.charAt(0)}</span>

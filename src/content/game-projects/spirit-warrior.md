@@ -5,7 +5,7 @@ tags: ["Unity", "C#", "Aseprite", "2D"]
 engine: "Unity"
 year: 2021
 order: 4
-image: "/src/assets/spiritwarrior_title.png"
+image: "../../assets/spiritwarrior_title.png"
 imageAlt: "The logo for the game The Spirit Warrior's Quest, done in cursive and outlined softly in blue. Plants grow among the letters."
 playUrl: "https://sushi-muffin.itch.io/the-spirit-warriors-quest"
 --- 

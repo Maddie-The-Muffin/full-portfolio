@@ -1,12 +1,13 @@
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
+import type { SchemaContext } from 'astro:content';
 
-const projectSchema = z.object({
+const projectSchema = ({ image }: SchemaContext) => z.object({
     title: z.string(),
     summary: z.string(),
     tags: z.array(z.string()),
-    image: z.string().optional(),
+    image: image().optional(),
     imageAlt: z.string().optional(),
     year: z.number().int(),
     featured: z.boolean().default(false),
@@ -16,7 +17,7 @@ const projectSchema = z.object({
 
 const webProjects = defineCollection({
     loader: glob({ pattern: '**/*.md', base: './src/content/web-projects' }),
-    schema: projectSchema.extend({
+    schema: (context) => projectSchema(context).extend({
         liveUrl: z.string().url().optional(),
         repoUrl: z.string().url().optional(),
     }),
@@ -24,7 +25,7 @@ const webProjects = defineCollection({
 
 const gameProjects = defineCollection({
     loader: glob({ pattern: '**/*.md', base: './src/content/game-projects' }),
-    schema: projectSchema.extend({
+    schema: (context) => projectSchema(context).extend({
         playUrl: z.string().url().optional(),
         repoUrl: z.string().url().optional(),
         engine: z.string().optional(),

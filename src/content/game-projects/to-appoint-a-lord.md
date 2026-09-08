@@ -5,7 +5,7 @@ tags: ["Unity", "C#", "2D", "Aseprite"]
 engine: "Unity"
 year: 2021
 order: 5
-image: "/src/assets/appoint_logo.png"
+image: "../../assets/appoint_logo.png"
 imageAlt: "The logo for 'To Appoint A Lord,' golden letters over a rippling red cape."
 playUrl: "https://sushi-muffin.itch.io/to-appoint-a-lord"
 ---
