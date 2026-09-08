@@ -18,16 +18,16 @@ const projectSchema = ({ image }: SchemaContext) => z.object({
 const webProjects = defineCollection({
     loader: glob({ pattern: '**/*.md', base: './src/content/web-projects' }),
     schema: (context) => projectSchema(context).extend({
-        liveUrl: z.string().url().optional(),
-        repoUrl: z.string().url().optional(),
+        liveUrl: z.url().optional(),
+        repoUrl: z.url().optional(),
     }),
 });
 
 const gameProjects = defineCollection({
     loader: glob({ pattern: '**/*.md', base: './src/content/game-projects' }),
     schema: (context) => projectSchema(context).extend({
-        playUrl: z.string().url().optional(),
-        repoUrl: z.string().url().optional(),
+        playUrl: z.url().optional(),
+        repoUrl: z.url().optional(),
         engine: z.string().optional(),
     }),
 });
