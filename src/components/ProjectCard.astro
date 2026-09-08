@@ -65,10 +65,10 @@ const {
         {(primaryLink || secondaryLink) && (
             <div class="project-links">
                 {primaryLink && (
-                    <a class="btn btn-primary" href={primaryLink.url}>{primaryLink.label}</a>
+                    <a class="btn btn-primary" href={primaryLink.url} target="_blank" referrerpolicy="no-referrer">{primaryLink.label}</a>
                 )}
                 {secondaryLink && (
-                    <a class="btn btn-secondary" href={secondaryLink.url}>{secondaryLink.label}</a>
+                    <a class="btn btn-secondary" href={secondaryLink.url} target="_blank" referrerpolicy="no-referrer">{secondaryLink.label}</a>
                 )}
             </div>
         )}
