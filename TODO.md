@@ -11,7 +11,7 @@ Outstanding items identified in a deployment-readiness audit (2026-09-04, refres
 
 - [X] **Stale ARIA label** — `src/components/AboutSection.astro` still has `role="img" aria-label="Placeholder for Maddie's photo"` left over from before the real headshot was added. It now redundantly wraps a real `<Image>` that already has correct alt text; remove the stale attributes.
 - [X] **Dead hidden link** — `src/pages/contact.astro` has a GitHub link with `href="#"` under `class="noshow"` (display:none) — an unfinished placeholder shipped in the HTML. Finish it or delete it.
-- [X] **Missing meta description / Open Graph tags** — `src/layouts/Layout.astro` has no `<meta name="description">` or OG tags on any page. Affects search results and social link previews. *(Note: only `<meta name="description">` was added — no `og:title`/`og:image`/`og:url`/Twitter card tags exist yet. Worth a look before checking this fully off — social link previews will still be blank.)*
+- [X] **Missing meta description / Open Graph tags** — `src/layouts/Layout.astro` has no `<meta name="description">` or OG tags on any page. Affects search results and social link previews. `og:title`/`og:description`/`og:url`/`twitter:card` now added; `og:url` and a `<link rel="canonical">` are computed per-page from `Astro.url`/`Astro.site` (previously `og:url` was hardcoded to the homepage on every page — fixed 2026-09-08).
 
 ## Domain-specific (update once the real domain is known)
 

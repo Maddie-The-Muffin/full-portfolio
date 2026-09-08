@@ -3,10 +3,10 @@ import Navbar from '../components/Navbar.astro'
 import { Font } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
 import '../styles/global.css';
-import { describe } from 'astro:schema';
 
 const { title } = Astro.props;
 const desc = "Meet Madilyn Tavares, an experienced programmer and champion of human-first development."
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
 <html lang="en">
@@ -18,17 +18,18 @@ const desc = "Meet Madilyn Tavares, an experienced programmer and champion of hu
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={desc} />
-		<meta 
+		<link rel="canonical" href={canonicalURL} />
+		<meta
 			property="og:title"
 			content="Maddie Tavares - Human-First Web Dev"
 		/>
-		<meta 
+		<meta
 			property="og:description"
 			content={desc}
 		/>
 		<meta
 			property="og:url"
-			content="https://maddietavares.dev"
+			content={canonicalURL}
 		/>
 		<meta 
 			name="twitter:card"
