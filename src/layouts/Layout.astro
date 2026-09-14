@@ -2,6 +2,7 @@
 import Navbar from '../components/Navbar.astro'
 import { Font } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
+import Analytics from '@vercel/analytics/astro';
 import '../styles/global.css';
 
 const { title } = Astro.props;
@@ -37,6 +38,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		/>
 		<Font cssVariable='--font-caveat' />
 		<Font cssVariable='--font-nunito' />
+		<Analytics />
 		<ClientRouter />
 	</head>
 	<body>
