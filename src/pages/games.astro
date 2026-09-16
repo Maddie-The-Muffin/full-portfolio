@@ -41,6 +41,12 @@ const games = (await getCollection('gameProjects')).sort(
 		margin: 0 0 var(--space-5) auto;
 	}
 
+	@media (max-width: 1170px) {
+		.projects-grid {
+			grid-template-columns: repeat(2, minmax(280px, 1fr));
+		}
+	}
+
 	@media (max-width: 860px) {
 		.projects-grid
 		{
