@@ -12,6 +12,10 @@ import ContactForm from '../components/ContactForm.astro';
 
 	<ContactForm />
 
+	<section class="mail" aria-label="direct-email">
+		<p>Form not working? Email me directly at <a href="mailto:maddietavdev@gmail.com">maddietavdev@gmail.com</a></p>
+	</section>
+
 	<section class="working-hours" aria-label="Working hours">
 		<p>My working hours are (as of right now) 10am-4pm EST, Monday-Thursday. Subject to change without notice.</p>
 		<p>Projects I feel comfortable taking on include simple landing pages, small interactive apps and internal dashboards. I will not accept 
@@ -32,13 +36,24 @@ import ContactForm from '../components/ContactForm.astro';
 <style>
 	.working-hours {
 		width: var(--page-content-width);
-		margin: var(--space-4) 0 0 auto;
+		margin: var(--space-2) 0 0 auto;
 		text-align: center;
 	}
 
 	.working-hours p {
 		width: 70%;
 		font-size: 12px;
+		margin: 0 auto var(--space-1) auto;
+	}
+
+	.mail {
+		width: var(--page-content-width);
+		margin: var(--space-2) 0 0 auto;
+		text-align: center;
+	}
+
+	.mail p {
+		width: 70%;
 		margin: 0 auto var(--space-1) auto;
 	}
 
@@ -65,12 +80,12 @@ import ContactForm from '../components/ContactForm.astro';
 	}
 
 	@media (max-width: 860px) {
-		.working-hours, .elsewhere {
+		.working-hours, .elsewhere, .mail {
 			width: 100%;
 			margin: 0 auto;
 		}
 
-		.working-hours p {
+		.working-hours p, .mail p {
 			width: 90%;
 		}
 	}
