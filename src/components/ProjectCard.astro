@@ -29,9 +29,16 @@ const {
     primaryLink,
     secondaryLink,
 } = Astro.props;
+
+const hasDetails = Astro.slots.has('default');
 ---
 
-<article class="project-card postcard">
+<article
+    class={`project-card postcard${hasDetails ? ' has-details' : ''}`}
+    tabindex={hasDetails ? 0 : undefined}
+    role={hasDetails ? 'button' : undefined}
+    aria-haspopup={hasDetails ? 'dialog' : undefined}
+>
     <div class="project-face">
         {image ? (
             <Image src={image} alt={imageAlt ?? title} loading="lazy" />
@@ -41,6 +48,8 @@ const {
             </div>
         )}
     </div>
+
+    {console.log("details? " + hasDetails)}
 
     <div class="project-body">
         <div class="project-heading">
@@ -73,7 +82,75 @@ const {
             </div>
         )}
     </div>
+
+    {hasDetails && (
+        <dialog class="detail-dialog postcard" aria-label={`${title} details`}>
+            <button type="button" class="detail-close" aria-label="Close details">&times;</button>
+            <div class="detail-heading">
+                <h3>{title}</h3>
+                {(year || meta) && (
+                    <p class="project-meta">
+                        {meta}{meta && year ? ' · ' : ''}{year}
+                    </p>
+                )}
+            </div>
+            {image && <Image src={image} alt={imageAlt ?? title} loading="lazy" />}
+            {tags.length > 0 && (
+                <ul class="project-tags">
+                    {tags.map((tag) => (
+                        <li class="tag-pill">{tag}</li>
+                    ))}
+                </ul>
+            )}
+            <div class="detail-body"><slot /></div>
+            {(primaryLink || secondaryLink) && (
+                <div class="project-links">
+                    {primaryLink && (
+                        <a class="btn btn-primary" href={primaryLink.url} target="_blank" referrerpolicy="no-referrer">{primaryLink.label}</a>
+                    )}
+                    {secondaryLink && (
+                        <a class="btn btn-secondary" href={secondaryLink.url} target="_blank" referrerpolicy="no-referrer">{secondaryLink.label}</a>
+                    )}
+                </div>
+            )}
+        </dialog>
+    )}
 </article>
+
+<script>
+    document.querySelectorAll<HTMLElement>('.project-card.has-details').forEach((card) => {
+        const dialog = card.querySelector('dialog');
+        if (!dialog) return;
+
+        const open = () => {
+            dialog.showModal();
+            document.body.style.overflow = 'hidden';
+        };
+
+        dialog.addEventListener('close', () => {
+            document.body.style.overflow = '';
+        });
+
+        card.addEventListener('click', (e) => {
+            const target = e.target as HTMLElement;
+            if (dialog.contains(target)) {
+                // Clicks inside the dialog: close on X or backdrop only
+                if (target === dialog || target.closest('.detail-close')) dialog.close();
+                return;
+            }
+            if (target.closest('a')) return;
+            open();
+        });
+
+        card.addEventListener('keydown', (e) => {
+            if (e.target !== card) return;
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                open();
+            }
+        });
+    });
+</script>
 
 <style>
     .project-card {
@@ -154,6 +231,64 @@ const {
         gap: 0.75em;
         flex-wrap: wrap;
         margin-top: 0.25em;
+    }
+
+    .has-details {
+        cursor: pointer;
+        transition: box-shadow 0.15s ease;
+    }
+
+    .has-details:hover,
+    .has-details:focus-visible {
+        box-shadow: 0 4px 14px rgba(63, 74, 52, 0.25);
+    }
+
+    .detail-dialog {
+        transform: none;
+        position: fixed;
+        width: min(640px, 92vw);
+        max-height: 85vh;
+        overflow-y: auto;
+        margin: auto;
+        padding: var(--space-3);
+        color: var(--color-text);
+        cursor: default;
+    }
+
+    .detail-dialog::backdrop {
+        background: rgba(40, 46, 34, 0.6);
+    }
+
+    .detail-dialog img {
+        width: 100%;
+        height: auto;
+        margin: var(--space-2) 0;
+    }
+
+    .detail-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.75rem;
+        background: none;
+        border: none;
+        font-size: 1.75rem;
+        line-height: 1;
+        color: var(--color-text-muted);
+        cursor: pointer;
+    }
+
+    .detail-body {
+        margin: var(--space-2) 0;
+    }
+
+    .detail-body :global(h2) {
+        font-size: 1.2rem;
+        margin: var(--space-2) 0 0.25em;
+    }
+
+    .detail-body :global(p),
+    .detail-body :global(ul) {
+        margin: 0 0 0.5em;
     }
 
     @media (max-width: 860px) {

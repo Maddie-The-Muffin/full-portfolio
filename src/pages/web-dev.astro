@@ -2,11 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
-const projects = (await getCollection('webProjects')).sort(
-    (a, b) => a.data.order - b.data.order || b.data.year - a.data.year
-).filter((project) => project.data.display);
+const projects = await Promise.all(
+    (await getCollection('webProjects'))
+        .sort((a, b) => a.data.order - b.data.order || b.data.year - a.data.year)
+        .filter((project) => project.data.display)
+        .map(async (entry) => ({ entry, Content: (await render(entry)).Content, hasBody: !!entry.body?.trim() }))
+);
 ---
 
 <Layout title="Web Dev - Maddie Tavares">
@@ -17,7 +20,7 @@ const projects = (await getCollection('webProjects')).sort(
 	/>
 
 	<div class="projects-grid">
-		{projects.length > 0 ? projects.map((project) => (
+		{projects.length > 0 ? projects.map(({ entry: project, Content, hasBody }) => (
 			<ProjectCard
 				title={project.data.title}
 				summary={project.data.summary}
@@ -27,7 +30,7 @@ const projects = (await getCollection('webProjects')).sort(
 				imageAlt={project.data.imageAlt}
 				primaryLink={project.data.liveUrl ? { label: 'Live site', url: project.data.liveUrl } : undefined}
 				secondaryLink={project.data.repoUrl ? { label: 'Code', url: project.data.repoUrl } : undefined}
-			/>
+			>{hasBody && <Content />}</ProjectCard>
 		)) : (<p class="placeholder">Check back soon for updates!</p>)
 		}
 	</div>

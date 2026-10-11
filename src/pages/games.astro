@@ -2,10 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
-const games = (await getCollection('gameProjects')).sort(
-    (a, b) => a.data.order - b.data.order || b.data.year - a.data.year
+const games = await Promise.all(
+    (await getCollection('gameProjects'))
+        .sort((a, b) => a.data.order - b.data.order || b.data.year - a.data.year)
+        .map(async (entry) => ({ entry, Content: (await render(entry)).Content, hasBody: !!entry.body?.trim() }))
 );
 ---
 
@@ -16,7 +18,7 @@ const games = (await getCollection('gameProjects')).sort(
 	/>
 
 	<div class="projects-grid">
-		{games.map((game) => (
+		{games.map(({ entry: game, Content, hasBody }) => (
 			<ProjectCard
 				title={game.data.title}
 				summary={game.data.summary}
@@ -27,7 +29,7 @@ const games = (await getCollection('gameProjects')).sort(
 				imageAlt={game.data.imageAlt}
 				primaryLink={game.data.playUrl ? { label: 'Play', url: game.data.playUrl } : undefined}
 				secondaryLink={game.data.repoUrl ? { label: 'Code', url: game.data.repoUrl } : undefined}
-			/>
+			>{hasBody && <Content />}</ProjectCard>
 		))}
 	</div>
 </Layout>
