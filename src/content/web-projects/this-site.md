@@ -1,7 +1,7 @@
 ---
 title: "This very site!"
 summary: "A website/portfolio built by yours truly."
-tags: ["Astro", "CSS", "Claude Code"]
+tags: ["Astro.js", "CSS", "Claude Code"]
 year: 2026
 order: 999
 image: "../../assets/maddie-portfolio.png"
