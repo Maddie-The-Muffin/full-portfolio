@@ -49,8 +49,6 @@ const hasDetails = Astro.slots.has('default');
         )}
     </div>
 
-    {console.log("details? " + hasDetails)}
-
     <div class="project-body">
         <div class="project-heading">
             <h3>{title}</h3>
@@ -118,38 +116,44 @@ const hasDetails = Astro.slots.has('default');
 </article>
 
 <script>
-    document.querySelectorAll<HTMLElement>('.project-card.has-details').forEach((card) => {
-        const dialog = card.querySelector('dialog');
-        if (!dialog) return;
+    // Runs on every page load: with ClientRouter the module script only
+    // executes once, but navigation swaps in fresh card elements.
+    function initProjectCards() {
+        document.querySelectorAll<HTMLElement>('.project-card.has-details').forEach((card) => {
+            const dialog = card.querySelector('dialog');
+            if (!dialog) return;
 
-        const open = () => {
-            dialog.showModal();
-            document.body.style.overflow = 'hidden';
-        };
+            const open = () => {
+                dialog.showModal();
+                document.body.style.overflow = 'hidden';
+            };
 
-        dialog.addEventListener('close', () => {
-            document.body.style.overflow = '';
-        });
+            dialog.addEventListener('close', () => {
+                document.body.style.overflow = '';
+            });
 
-        card.addEventListener('click', (e) => {
-            const target = e.target as HTMLElement;
-            if (dialog.contains(target)) {
-                // Clicks inside the dialog: close on X or backdrop only
-                if (target === dialog || target.closest('.detail-close')) dialog.close();
-                return;
-            }
-            if (target.closest('a')) return;
-            open();
-        });
-
-        card.addEventListener('keydown', (e) => {
-            if (e.target !== card) return;
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
+            card.addEventListener('click', (e) => {
+                const target = e.target as HTMLElement;
+                if (dialog.contains(target)) {
+                    // Clicks inside the dialog: close on X or backdrop only
+                    if (target === dialog || target.closest('.detail-close')) dialog.close();
+                    return;
+                }
+                if (target.closest('a')) return;
                 open();
-            }
+            });
+
+            card.addEventListener('keydown', (e) => {
+                if (e.target !== card) return;
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    open();
+                }
+            });
         });
-    });
+    }
+
+    document.addEventListener('astro:page-load', initProjectCards);
 </script>
 
 <style>
