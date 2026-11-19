@@ -163,15 +163,17 @@ const hasDetails = Astro.slots.has('default');
         overflow: hidden;
     }
 
-    .project-card:nth-child(3n + 1) {
+    /* Astro can render this component's <script> inline next to each card, so
+       it counts as a sibling for :nth-child. :nth-of-type only counts <article>s. */
+    article.project-card:nth-of-type(3n + 1) {
         transform: rotate(-0.6deg);
     }
 
-    .project-card:nth-child(3n + 2) {
+    article.project-card:nth-of-type(3n + 2) {
         transform: rotate(0.4deg);
     }
 
-    .project-card:nth-child(3n + 3) {
+    article.project-card:nth-of-type(3n + 3) {
         transform: rotate(-0.3deg);
     }
 
@@ -301,7 +303,7 @@ const hasDetails = Astro.slots.has('default');
             margin: 0 auto var(--space-3) auto;
         }
 
-        .project-card:last-child {
+        article.project-card:last-of-type {
             margin: 0 auto;
         }
 
