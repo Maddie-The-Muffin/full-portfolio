@@ -3,7 +3,7 @@ title: "Book Tracker"
 summary: "A web app to help prospective and avid readers keep track of everything they have read and will read!"
 tags: ["Next.js", "Tailwind CSS", "TypeScript", "BetterAuth"]
 year: 2026
-order: 2
+order: 3
 image: "../../assets/book-tracker.png"
 imageAlt: "A thumbnail showing the Book Tracker web app."
 liveUrl: "https://a-book-tracker.vercel.app/"

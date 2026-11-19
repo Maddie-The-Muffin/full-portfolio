@@ -3,7 +3,7 @@ title: "Jeremy Lawrence Jokes"
 summary: "A website built for Houston-based comedian Jeremy Lawrence."
 tags: ["Astro.js", "Sheets API", "Tailwind CSS", "Claude Code"]
 year: 2026
-order: 3
+order: 4
 image: "../../assets/jljokes-page.png"
 liveUrl: "https://www.jeremylawrencejokes.com"
 ---
